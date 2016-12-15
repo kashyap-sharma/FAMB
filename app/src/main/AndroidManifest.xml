@@ -9,11 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
         <activity android:name=".Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Prof" />
         <activity android:name=".AddPpl" />
@@ -24,6 +20,11 @@
         <activity android:name=".NewPoll" />
         <activity android:name=".NewTask"></activity>
         <activity android:name=".Calendar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
     </application>
