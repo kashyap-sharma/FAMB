@@ -16,6 +16,9 @@
     <string name="plant1">Lorem Ipsum</string>
     <string name="plant2">Some Name</string>
     <string name="plant3">James Bond</string>
+    <string name="name1">Gopal Agrawal</string>
+    <string name="name2">Jatin Garg</string>
+    <string name="name3">Mayank Sharma</string>
     <string name="regular">Regular sms charges \n may apply</string>
     <string name="title_activity_make_bond">MakeBond</string>
 

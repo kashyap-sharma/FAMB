@@ -4,7 +4,6 @@
     android:orientation="horizontal"
     android:background="@color/colorPrimary"
     android:layout_width="match_parent"
-    android:id="@+id/papa"
     android:gravity="center_vertical"
     android:layout_height="80dp">
     <co.jlabs.famb.Rounded.CircularImageView
@@ -24,20 +23,17 @@
         android:layout_toLeftOf="@+id/add"
         android:layout_centerVertical="true"
         android:textColor="#ffffff"/>
-    <co.jlabs.famb.checkBox.CircleCheckBox
-        android:id="@+id/circle_check_box"
-        app:tick_width="2dp"
-        android:visibility="gone"
-        app:animation_duration="500"
-        app:border_width="2dp"
-        app:border_color="@color/colorBot"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="10dp"
-        android:layout_width="20dp"
-        android:layout_height="20dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:background="#316F89"/>
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:background="@drawable/add_all"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:id="@+id/add"
+        android:textSize="10sp"
+        android:textColor="@color/colorBot"
+        android:layout_alignParentRight="true"
+        android:text="+Add"/>
+
+
 </RelativeLayout>

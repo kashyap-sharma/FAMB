@@ -1,8 +1,6 @@
 package co.jlabs.famb;
 
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -19,9 +17,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class AddPpl extends AppCompatActivity implements ShareInf,View.OnClickListener {
 
@@ -95,7 +90,7 @@ public class AddPpl extends AppCompatActivity implements ShareInf,View.OnClickLi
 
         @Override
         public FakeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new FakeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.adap_add_ppl, parent, false));
+            return new FakeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.adap_invite_ppl, parent, false));
         }
 
         @Override
