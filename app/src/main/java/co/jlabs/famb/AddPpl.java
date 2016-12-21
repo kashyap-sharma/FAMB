@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class AddPpl extends AppCompatActivity implements ShareInf,View.OnClickListener {
 
     private RecyclerView recyclerView;
@@ -168,6 +170,22 @@ public class AddPpl extends AppCompatActivity implements ShareInf,View.OnClickLi
     }
 
     public void submit1(){
+
+
+    }
+    public  void onMycall(ArrayList<String> ar) {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.dialog);
+        LinearLayout whatsapp=(LinearLayout)dialog.findViewById(R.id.whatsapp);
+        TextView w=(TextView) dialog.findViewById(R.id.w);
+        //w.setText(i);
+        LinearLayout sms=(LinearLayout)dialog.findViewById(R.id.sms);
+        whatsapp.setOnClickListener(this);
+        sms.setOnClickListener(this);
+
+        dialog.show();
 
 
     }

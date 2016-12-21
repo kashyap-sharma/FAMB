@@ -1,13 +1,17 @@
 package co.jlabs.famb;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -18,6 +22,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import java.util.ArrayList;
+import java.util.List;
 
 import co.jlabs.famb.Rounded.CircularImageView;
 import co.jlabs.famb.checkBox.CircleCheckBox;
@@ -32,10 +38,14 @@ public class NewBond extends AppCompatActivity implements ShareInf, View.OnClick
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
     private RelativeLayout activity_add_ppl;
+    private List<Models> mModelList;
+    RecyclerView.Adapter mAdapter;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context=this;
         setContentView(R.layout.activity_new);
         initView();
     }
@@ -49,8 +59,15 @@ public class NewBond extends AppCompatActivity implements ShareInf, View.OnClick
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         activity_add_ppl = (RelativeLayout) findViewById(R.id.activity_add_ppl);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new RecyclerViewAdapter(1, this));
+        mAdapter=new RecyclerViewAdapter(getListData(),this);
+
+        recyclerView.setAdapter(mAdapter);
+
+
+
+
         fab.setOnClickListener(this);
         search.setOnClickListener(this);
         back.setOnClickListener(this);
@@ -71,86 +88,14 @@ public class NewBond extends AppCompatActivity implements ShareInf, View.OnClick
         }
     }
 
-
-
-    private static class RecyclerViewAdapter extends RecyclerView.Adapter<FakeViewHolder> {
-
-        int[] drawables;
-        public ShareInf mAdapterCallback;
-        int[] names;
-
-
-
-
-
-        public RecyclerViewAdapter(int index,ShareInf mAdapterCallback) {
-            this.mAdapterCallback = mAdapterCallback;
-            if (index==1) {
-                drawables = new int[] {
-                        R.drawable.plant1,
-                        R.drawable.plant2,
-                        R.drawable.plant3
-                };
-                names = new int[] {
-                        R.string.name1,
-                        R.string.name2,
-                        R.string.name3
-                };
-            }
-
+    private List<Models> getListData() {
+        mModelList = new ArrayList<>();
+        for (int i = 1; i <= 9; i++) {
+            mModelList.add(new Models("TextView " + i));
         }
-
-        @Override
-        public FakeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new FakeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.adap_add_ppl, parent, false));
-        }
-
-        @Override
-        public void onBindViewHolder(final FakeViewHolder holder, final int position) {
-            holder.imageView.setImageResource(drawables[position % 3]);
-            holder.name_ppl.setText(names[position % 3]);
-            holder.add.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if( holder.circleCheckBox.getVisibility()==View.VISIBLE){
-                        holder.circleCheckBox.setVisibility(View.GONE);
-                        holder.add.setBackgroundColor(Color.parseColor("#175E7B"));
-                    }
-                      else  {
-                        holder.circleCheckBox.setVisibility(View.VISIBLE);
-                        //holder.circleCheckBox.performClick();
-                        holder.add.setBackgroundColor(Color.parseColor("#216480"));
-                        holder.circleCheckBox.setChecked(true);
-                    }
-
-
-                    //mAdapterCallback.onMethodCallback(holder.name_ppl.getText().toString());
-
-                }
-            });
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return 9;
-        }
+        return mModelList;
     }
-    private static class FakeViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
-        TextView name_ppl;
-        RelativeLayout add;
-        CircleCheckBox circleCheckBox;
-        public FakeViewHolder(View itemView) {
-            super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.img_ppl);
-            name_ppl = (TextView) itemView.findViewById(R.id.name_ppl);
-            add = (RelativeLayout) itemView.findViewById(R.id.papa);
-            circleCheckBox = (CircleCheckBox) itemView.findViewById(R.id.circle_check_box);
-
-        }
-    }
     public  void onMethodCallback(String i) {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -162,9 +107,38 @@ public class NewBond extends AppCompatActivity implements ShareInf, View.OnClick
         LinearLayout sms=(LinearLayout)dialog.findViewById(R.id.sms);
         whatsapp.setOnClickListener(this);
         sms.setOnClickListener(this);
-
         dialog.show();
 
 
     }
+
+    public  void onMycall(final ArrayList<String> ar) {
+        Log.e("meda:"+ar.size(),"");
+        if (ar.size()>0){
+            fab.setVisibility(View.VISIBLE);
+            ppl_num.setText(ar.size()+" of 9 selected");
+
+        }else {
+            fab.setVisibility(View.GONE);
+            ppl_num.setText("Add People");
+        }
+        try {
+            for(int i=0;i<=ar.size();i++ ){
+                Log.e("meda"+ar.size(),""+ ar.get(i));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, NewBond2.class);
+                intent.putExtra("ar", ar);
+                startActivity(intent);
+
+            }
+        });
+
+    }
+
 }
