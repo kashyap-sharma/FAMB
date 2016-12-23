@@ -51,4 +51,34 @@
     <string name="polls1">3</string>
     <string name="events1">6</string>
     <string name="tasks1">3</string>
+    <string name="title_activity_chat_box">ChatBox</string>
+
+
+
+    <!--IconFonts-->
+    <string name="add_user">&#xf100;</string>
+    <string name="back">&#xf101;</string>
+    <string name="out">&#xf102;</string>
+    <string name="bubble_msg">&#xf103;</string>
+    <string name="attach">&#xf104;</string>
+    <string name="settin_gears">&#xf105;</string>
+    <string name="text_inp">&#xf106;</string>
+    <string name="gallery">&#xf107;</string>
+    <string name="gif">&#xf108;</string>
+    <string name="smiley">&#xf109;</string>
+    <string name="mic">&#xf10a;</string>
+    <string name="mic_off">&#xf10b;</string>
+    <string name="mute">&#xf10c;</string>
+    <string name="call">&#xf10d;</string>
+    <string name="camera">&#xf10e;</string>
+    <string name="delete">&#xf10f;</string>
+    <string name="send">&#xf110;</string>
+    <string name="setting">&#xf111;</string>
+    <string name="sos">&#xf112;</string>
+    <string name="speaker_on">&#xf113;</string>
+    <string name="call2">&#xf114;</string>
+    <string name="call_dis">&#xf115;</string>
+    <!--IconFonts-->
+
+
 </resources>

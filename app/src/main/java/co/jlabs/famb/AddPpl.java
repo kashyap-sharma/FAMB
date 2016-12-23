@@ -173,7 +173,7 @@ public class AddPpl extends AppCompatActivity implements ShareInf,View.OnClickLi
 
 
     }
-    public  void onMycall(ArrayList<String> ar) {
+    public  void onMycall(ArrayList<String> ar,ArrayList<Integer> ars) {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);

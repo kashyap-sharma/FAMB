@@ -19,14 +19,20 @@
         <activity android:name=".NewTask" />
         <activity android:name=".Calendar" />
         <activity android:name=".NewBond">
+
+        </activity>
+
+        <activity android:name=".NewBond2" />
+        <activity
+            android:name=".ChatBox"
+            android:label="@string/title_activity_chat_box"
+            android:theme="@style/AppTheme1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".delete.RecyclerViewDemoActivity" />
-        <activity android:name=".NewBond2"></activity>
     </application>
 
 </manifest>

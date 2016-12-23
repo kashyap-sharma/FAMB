@@ -29,6 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ShareInf mAdapterCallback;
     int[] names;
     ArrayList <String>ar=new ArrayList<String>();
+    ArrayList <Integer>arInt=new ArrayList<Integer>();
 
     private List<Models> mModelList;
 
@@ -65,7 +66,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(final FakeViewHolder holder, final int position) {
         final Models model = mModelList.get(position);
-       // holder.imageView.setImageResource(drawables[position % 3]);
+        holder.imageView.setImageResource(model.getPic());
+        holder.imageView.setTag(Integer.valueOf(model.getPic()));
         holder.name_ppl.setText(model.getText());
 
         holder.add.setOnClickListener(new View.OnClickListener() {
@@ -81,18 +83,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                    // ar.add(model.isSelected() ?   (holder.name_ppl.getText().toString()) : "");
                 if(model.isSelected()){
                     ar.add(holder.name_ppl.getText().toString());
+                    arInt.add(model.getPic());
                 }else{
                      Set<String> set = new HashSet<String>(ar);
 
                         if (set.contains(holder.name_ppl.getText().toString())){
                             ar.remove(holder.name_ppl.getText().toString());
+                            arInt.remove(holder.imageView.getTag());
                         }
 
                 }
                     holder.circleCheckBox.setVisibility(model.isSelected() ? View.VISIBLE : View.GONE);
 
                 //if(ar.size()>0){
-                    mAdapterCallback.onMycall(ar);
+                    mAdapterCallback.onMycall(ar,arInt);
                 //}
 
                 //Arrays.asList(name).add(holder.name_ppl.getText().toString());
@@ -124,7 +128,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return 9;
+        return mModelList.size();
     }
     public  class FakeViewHolder extends RecyclerView.ViewHolder {
 

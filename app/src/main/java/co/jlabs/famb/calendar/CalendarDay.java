@@ -209,7 +209,7 @@ public final class CalendarDay implements Parcelable {
     /**
      * Determine if this day is before the given instance
      *
-     * @param other the other day to test
+     * @param other the other day to text_color_states
      * @return true if this is before other, false if equal or after
      */
     public boolean isBefore(@NonNull CalendarDay other) {
@@ -226,7 +226,7 @@ public final class CalendarDay implements Parcelable {
     /**
      * Determine if this day is after the given instance
      *
-     * @param other the other day to test
+     * @param other the other day to text_color_states
      * @return true if this is after other, false if equal or before
      */
     public boolean isAfter(@NonNull CalendarDay other) {

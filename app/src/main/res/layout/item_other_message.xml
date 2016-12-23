@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="3dp">
+    <co.jlabs.famb.Rounded.CircularImageView
+        android:layout_width="45dp"
+        android:id="@+id/img"
+        android:src="@drawable/jawwad"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:layout_height="45dp" />
+    <co.jlabs.famb.chatBox.ChatMessageView
+        android:id="@+id/chatMessageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cmv_arrowGravity="start"
+        android:layout_toRightOf="@+id/img"
+        android:layout_marginRight="75dp"
+        android:layout_centerVertical="true"
+        app:cmv_arrowPosition="left"
+        app:cmv_backgroundColor="#81C63A"
+        app:cmv_backgroundColorPressed="#ff00bcd4"
+        app:cmv_cornerRadius="3dp"
+        app:cmv_showArrow="true">
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hello"
+            android:textColor="#ffffff"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </co.jlabs.famb.chatBox.ChatMessageView>
+
+</RelativeLayout>

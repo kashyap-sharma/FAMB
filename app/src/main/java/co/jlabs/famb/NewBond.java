@@ -90,9 +90,12 @@ public class NewBond extends AppCompatActivity implements ShareInf, View.OnClick
 
     private List<Models> getListData() {
         mModelList = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
-            mModelList.add(new Models("TextView " + i));
-        }
+        mModelList.add(new Models("Gopal Agrawal", R.drawable.gopal));
+        mModelList.add(new Models("Sumit Sharma", R.drawable.sumit));
+        mModelList.add(new Models("Lorem Ipsum", R.drawable.lorem));
+        mModelList.add(new Models("Kashyap Sharma", R.drawable.kashyap));
+        mModelList.add(new Models("Jawwad", R.drawable.jawwad));
+        mModelList.add(new Models("Jatin Garg", R.drawable.jatin));
         return mModelList;
     }
 
@@ -112,7 +115,7 @@ public class NewBond extends AppCompatActivity implements ShareInf, View.OnClick
 
     }
 
-    public  void onMycall(final ArrayList<String> ar) {
+    public  void onMycall(final ArrayList<String> ar,final ArrayList<Integer> arInt) {
         Log.e("meda:"+ar.size(),"");
         if (ar.size()>0){
             fab.setVisibility(View.VISIBLE);
@@ -134,6 +137,7 @@ public class NewBond extends AppCompatActivity implements ShareInf, View.OnClick
             public void onClick(View v) {
                 Intent intent=new Intent(context, NewBond2.class);
                 intent.putExtra("ar", ar);
+                intent.putExtra("arInt", arInt);
                 startActivity(intent);
 
             }

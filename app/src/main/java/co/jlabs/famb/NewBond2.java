@@ -1,6 +1,7 @@
 package co.jlabs.famb;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -31,7 +32,7 @@ public class NewBond2 extends AppCompatActivity implements View.OnClickListener 
     
    // private ArrayList<String> ar;
     private ImageView back;
-    private TextView up;
+    private TextView up,ppl_num;
     private RelativeLayout action_bar;
     private CircularImageView bond_img;
     private RelativeLayout upper;
@@ -57,9 +58,11 @@ public class NewBond2 extends AppCompatActivity implements View.OnClickListener 
 
     private void initView() {
         ArrayList<String> ar = getIntent().getStringArrayListExtra("ar");
+        ArrayList<Integer> arInt = getIntent().getIntegerArrayListExtra("arInt");
         Log.e(ar.size()+"","dats");
         back = (ImageView) findViewById(R.id.back);
         up = (TextView) findViewById(R.id.up);
+        ppl_num = (TextView) findViewById(R.id.ppl_num);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         bondname = (EditText) findViewById(R.id.bond_name);
         action_bar = (RelativeLayout) findViewById(R.id.action_bar);
@@ -69,21 +72,23 @@ public class NewBond2 extends AppCompatActivity implements View.OnClickListener 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         activity_add_ppl = (RelativeLayout) findViewById(R.id.activity_add_ppl);
         fab.setOnClickListener(this);
-
+        ppl_num.setText(ar.size()+"/50");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new RecyclerViewAdapter(ar));
+        recyclerView.setAdapter(new RecyclerViewAdapter(ar,arInt));
     }
 
     private static class RecyclerViewAdapter extends RecyclerView.Adapter<FakeViewHolder> {
 
 
         private ArrayList<String> mCustomObjects;
+        private ArrayList<Integer> arInts;
 
 
 
 
-        public RecyclerViewAdapter(ArrayList<String> ar) {
+        public RecyclerViewAdapter(ArrayList<String> ar,ArrayList<Integer> arInt) {
             mCustomObjects=ar;
+            arInts=arInt;
 
 
         }
@@ -101,6 +106,7 @@ public class NewBond2 extends AppCompatActivity implements View.OnClickListener 
         public void onBindViewHolder(final FakeViewHolder holder, final int position) {
             //holder.imageView.setImageResource(drawables[position % 3]);
             holder.name_ppl.setText(mCustomObjects.get(position));
+            holder.imageView.setImageResource(arInts.get(position));
 
         }
 

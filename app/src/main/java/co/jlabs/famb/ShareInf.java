@@ -8,5 +8,5 @@ import java.util.ArrayList;
 
 public interface ShareInf {
      void  onMethodCallback(String i);
-     void  onMycall(ArrayList<String> ar);
+     void  onMycall(ArrayList<String> ar,ArrayList<Integer> arInt);
 }

@@ -26,19 +26,17 @@
     <style name="AppTheme1.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme1.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    <style name="TextAppearance.MaterialCalendarWidget.Header"
-        parent="android:TextAppearance.DeviceDefault.Small">
+
+    <style name="TextAppearance.MaterialCalendarWidget.Header" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearance.MaterialCalendarWidget.Date"
-        parent="android:TextAppearance.DeviceDefault.Small">
+    <style name="TextAppearance.MaterialCalendarWidget.Date" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorBot</item>
     </style>
 
-    <style name="TextAppearance.MaterialCalendarWidget.WeekDay"
-        parent="android:TextAppearance.DeviceDefault.Small">
+    <style name="TextAppearance.MaterialCalendarWidget.WeekDay" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textSize">12sp</item>
     </style>
 
