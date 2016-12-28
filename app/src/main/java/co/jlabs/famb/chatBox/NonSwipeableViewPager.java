@@ -1,16 +1,11 @@
 package co.jlabs.famb.chatBox;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.Scroller;
 
-import java.lang.reflect.Field;
 
 /**
  * Created by JLabs on 12/23/16.

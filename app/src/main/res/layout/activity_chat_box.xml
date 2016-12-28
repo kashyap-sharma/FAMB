@@ -7,6 +7,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context="co.jlabs.famb.ChatBox">
+    <com.jetradarmobile.snowfall.SnowfallView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        </com.jetradarmobile.snowfall.SnowfallView>
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -42,7 +46,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Niggas"
+                android:text="My Bond"
                 android:textSize="15sp"
                 android:layout_toRightOf="@+id/bond_img"
 
@@ -105,7 +109,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_chat_box" />
+    <include layout="@layout/content_chat_box2" />
 
 
 

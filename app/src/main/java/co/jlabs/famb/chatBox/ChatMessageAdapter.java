@@ -1,12 +1,16 @@
 package co.jlabs.famb.chatBox;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -54,6 +58,9 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
             textView.setText(getItem(position).getContent());
         } else if (viewType == MY_IMAGE) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_mine_image, parent, false);
+            ImageView img=(ImageView)convertView.findViewById(R.id.img);
+            BitmapDrawable ob = new BitmapDrawable(getItem(position).getContents());
+            img.setBackgroundDrawable(ob);
         } else {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_other_image, parent, false);
         }

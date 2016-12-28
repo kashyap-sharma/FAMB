@@ -1,8 +1,11 @@
 package co.jlabs.famb;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AppCompatActivity;
@@ -22,13 +25,14 @@ import java.util.List;
 import co.jlabs.famb.Rounded.CircularImageView;
 import co.jlabs.famb.chatBox.ChatMessage;
 import co.jlabs.famb.chatBox.ChatMessageAdapter;
+import co.jlabs.famb.chatBox.GalleryFrag;
 import co.jlabs.famb.chatBox.NonSwipeableViewPager;
 import co.jlabs.famb.chatBox.ShareAdap;
 import co.jlabs.famb.chatBox.TextFrag;
 import co.jlabs.famb.chatBox.VoiceFrag;
 import co.jlabs.famb.fonts.TextView_White;
 
-public class ChatBox extends AppCompatActivity implements ShareAdap {
+public class ChatBox extends FragmentActivity implements ShareAdap {
 
     private NonSwipeableViewPager viewPager;
     private TabLayout tabLayout;
@@ -83,7 +87,7 @@ public class ChatBox extends AppCompatActivity implements ShareAdap {
     private void setupViewPager(NonSwipeableViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new TextFrag(), getString(R.string.send));
-        adapter.addFragment(new TextFrag(), getString(R.string.send));
+        adapter.addFragment(new GalleryFrag(), getString(R.string.send));
         adapter.addFragment(new TextFrag(), getString(R.string.send));
         adapter.addFragment(new TextFrag(), getString(R.string.send));
         adapter.addFragment(new VoiceFrag(), getString(R.string.send));
@@ -92,8 +96,8 @@ public class ChatBox extends AppCompatActivity implements ShareAdap {
     }
 
     private void initView() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
         viewPager = (NonSwipeableViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -122,20 +126,33 @@ public class ChatBox extends AppCompatActivity implements ShareAdap {
         Log.d("LOG","hello " + data);
         sendMessage(data);
     }
+    @Override
+    public void onMethodCallbacks(Bitmap data) {
+        Log.d("LOG","hello " + data);
+        sendMessage(data);
+    }
 
 
     private void sendMessage(String message) {
-        ChatMessage chatMessage = new ChatMessage(message, true, false);
+        ChatMessage chatMessage = new ChatMessage(message, true, true);
         mAdapter.add(chatMessage);
 
         mimicOtherMessage(message);
     }
-
-    private void mimicOtherMessage(String message) {
-        ChatMessage chatMessage = new ChatMessage(message, false, false);
+    private void sendMessage(Bitmap message) {
+        ChatMessage chatMessage = new ChatMessage(message, true, true);
         mAdapter.add(chatMessage);
+        mimicOtherMessage(message);
     }
 
+    private void mimicOtherMessage(Bitmap message) {
+        ChatMessage chatMessage = new ChatMessage(message, false, true);
+        mAdapter.add(chatMessage);
+    }
+    private void mimicOtherMessage(String message) {
+        ChatMessage chatMessage = new ChatMessage(message, false, true);
+        mAdapter.add(chatMessage);
+    }
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private int mCurrentPosition = -1;
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -180,4 +197,6 @@ public class ChatBox extends AppCompatActivity implements ShareAdap {
             return mFragmentTitleList.get(position);
         }
     }
+
+
 }
